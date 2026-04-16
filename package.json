@@ -1,10 +1,13 @@
 {
-  "name": "tailwind-plus-salient",
+  "name": "dmd-website",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "opennextjs-cloudflare build",
+    "build:next": "next build",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "start": "next start",
     "lint": "next lint"
   },
@@ -21,11 +24,13 @@
     "tailwindcss": "^4.2.2"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.1",
     "eslint": "^9.32.0",
     "eslint-config-next": "16.1.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.2",
-    "sharp": "0.34.3"
+    "sharp": "0.34.3",
+    "wrangler": "^4.83.0"
   },
   "overrides": {
     "@types/react": "19.2.14",

@@ -26,6 +26,11 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.dev.vars*
+
+# OpenNext / Wrangler
+.open-next/
+.wrangler/
 
 # vercel
 .vercel
