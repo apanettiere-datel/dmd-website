@@ -213,7 +213,7 @@ export default function CarPricingPage() {
           </Container>
         </AnimatedSection>
 
-        <AnimatedSection className="bg-slate-50 py-20 sm:py-24">
+        <AnimatedSection viewportAmount={0.02} className="bg-slate-50 py-20 sm:py-24">
           <Container>
             <h2 className="font-display text-4xl tracking-tight text-slate-900 sm:text-5xl">
               Full Package Details
