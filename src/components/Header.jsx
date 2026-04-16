@@ -11,7 +11,6 @@ const navItems = [
   { name: 'About', href: '/#about' },
   { name: 'System X', href: '/system-x' },
   { name: 'Gallery', href: '/gallery' },
-  { name: 'Free Quote', href: '/quote' },
 ]
 
 export function Header() {
