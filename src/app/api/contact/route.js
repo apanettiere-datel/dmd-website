@@ -12,6 +12,11 @@ function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
 }
 
+function isValidPreferredDay(value) {
+  if (!value) return false
+  return /^\d{4}-\d{2}-\d{2}$/.test(value)
+}
+
 function escapeHtml(value) {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -139,6 +144,11 @@ async function sendWithResend({
   })
 
   if (!response.ok) {
+    const responseText = await response.text()
+    console.error('Resend API error', {
+      status: response.status,
+      body: responseText,
+    })
     return { ok: false, message: 'Unable to send quote request email.' }
   }
 
@@ -176,6 +186,16 @@ export async function POST(request) {
         {
           ok: false,
           message: 'Please fill out all required fields.',
+        },
+        { status: 400 },
+      )
+    }
+
+    if (!preferredDay || !isValidPreferredDay(preferredDay)) {
+      return NextResponse.json(
+        {
+          ok: false,
+          message: 'Please choose a valid preferred day.',
         },
         { status: 400 },
       )

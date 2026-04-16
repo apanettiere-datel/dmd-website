@@ -63,6 +63,14 @@ export function ContactForm({ preferredDay, onPreferredDayChange }) {
 
     const preferredDayValue = preferredDay ?? internalPreferredDay
 
+    if (!preferredDayValue) {
+      setStatus({
+        type: 'error',
+        message: 'Please choose a preferred day before submitting your request.',
+      })
+      return
+    }
+
     const payload = {
       firstName: String(formData.get('firstName') || ''),
       lastName: String(formData.get('lastName') || ''),
@@ -211,6 +219,7 @@ export function ContactForm({ preferredDay, onPreferredDayChange }) {
             type="button"
             onClick={openCalendar}
             className="mt-2 block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-left text-sm text-slate-800 outline-none transition hover:border-sky-300 focus:border-sky-500"
+            aria-label="Choose a preferred day"
           >
             {selectedPreferredDay ? formatDisplayDate(selectedPreferredDay) : 'Choose a preferred day'}
           </button>
